@@ -1,0 +1,55 @@
+<div class="users">
+
+<!-- 詳細検索 -->
+<div class="search_list">
+  <h3>詳細検索</h3>
+  <div class="">
+   <% provide(:name, 'All users') %>
+   <%= search_form_for User.ransack()  do |f| %>
+  <div class="search_box">
+    <div class="form-group"><%= f.search_field :name_cont, placeholder:"メンバーを検索" %></div>
+    <div class="form-group"><%= f.radio_button :gender_id_eq, "男" %> 男</div>
+    <div class="form-group"><%= f.radio_button :gender_id_eq, "女" %> 女</div>
+    <div class="form-group"><%= f.radio_button :gender_id_eq, "その他" %> その他</div>
+    <div class="form-group"><%= f.select :homegym_eq,  [["JEXER", "JEXER"], ["JOYFIT", "JOYFIT"], ["ANYTIME FITNESS", "ANYTIME FITNESS"], ["konami", "konami"],["GOLDSGYM", "GOLDSGYM"],["その他", "その他"]], :include_blank => "指定なし" %>通っているジム</div>
+    <div class="form-group">
+      <%= f.number_field :age_gteq, min:0,max:100,step:5 %>歳以上 ~
+      <%= f.number_field :age_lteq, min:0,max:100,step:5 %>歳以下
+    </div>
+    <div class="search">
+      <button type="submit" class="btn btn-default active">検索</button>
+    </div>
+  <% end %>
+  </div>
+  </div>
+</div>
+
+<!-- メンバー一覧 -->
+<div class="center-block" style="width: 500px; height: 750px; text-align: center; background-color: #ffe661; border: 1px solid gray; padding: 5px;">
+  <div class="headline">
+    <div class="search_box">
+       <% provide(:name, 'All users') %>
+       <%= search_form_for User.ransack()  do |f| %>
+       <div class="form-group"><%= f.search_field :name_cont, placeholder:"メンバーを検索", size:15 %>
+       </div>
+    </div>
+      <div class="search">
+        <button type="submit" class="btn btn-default active">検索</button>
+      </div>
+      <div class="sort">
+      <%= sort_link(@search, :id, '登録日時') %>
+      </div>
+     <% end %>
+  </div>
+
+   <ul class="member">
+    <% @users.each do |user| %>
+      <li class="member_li">
+        <%= attachment_image_tag(user, :profile_image, :fill, 100, 100, format: 'jpeg', class: "img-circle pull-left profile-img", fallback: "no_image2.jpg") %>
+        <%= link_to user.name, user_path(user.id) %>
+      </li>
+    <% end %>
+  </ul>
+  <%= paginate @users %>
+</div>
+</div>

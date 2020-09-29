@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ゴウトレ！</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+  <body>
+    <div id="fb-root"></div>
+    <script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = 'https://connect.facebook.net/ja_JP/sdk.js#xfbml=1&version=v3.2';
+    fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+    </script>
+    <!-- フラッシュメッセージ -->
+　　<div class="flash">
+      <% flash.each do |key, value| %>
+        <%= content_tag(:div, value, class: "#{key}") %>
+      <% end %>
+    </div>
+<!-- ナビバー -->
+  <nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed"data-toggle="collapse"data-target="#navbarEexample8">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <div class="collapse navbar-collapse" id="navbarEexample8">
+      <ul class="nav navbar-nav">
+      <% if user_signed_in? %>
+      　<li><%= image_tag('iNlA.png', :size => "170x60",) %><li>
+        <li><%= link_to 'マイページ', user_path(current_user.id), class:"glyphicon glyphicon-home" %></li>
+        <li><a href="/posts" class="glyphicon glyphicon-book">募集一覧</a></li>
+        <li><a href="/users" class="glyphicon glyphicon-user">メンバー覧</a></li>
+        <li><a href="/messages" class="glyphicon glyphicon-send">トーク</a></li>
+        <li class=""><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class:"glyphicon glyphicon-log-out" %></li>
+      <% else %>
+       <li class="">
+        <li><%= image_tag('iNlA.png', :size => "170x60",) %><li>
+        <li><a href="/users/sign_up" class="glyphicon glyphicon-edit">新規登録</a></li>
+  　　　<li><a href="/" class="glyphicon glyphicon-book">募集一覧</a></li>
+        <li><a href="/" class="glyphicon glyphicon-user">メンバー覧</a></li>
+        <li><a href="/" class="glyphicon glyphicon-send">トーク</a></li>
+        <li class=""><%= link_to "ログイン", new_user_session_path, class:"glyphicon glyphicon-log-in" %></li>
+      <% end %>
+      </ul>
+    </div>
+    </nav>
+<%= yield %>
+ <footer class="footer">
+      <%= image_tag('iNlA.png', :size => "170x70",) %><br>
+      <p class="no-margin" style="font-size: 11px;">筋トレ仲間募集サイト</p>
+      <a href="" title="About">お問い合わせ</a><br>
+      <a href="" title="License informations">プライバシーポリシー</a>
+      <p>Copyright 2018🄫 Gotore!. All Rights Reserved.</p>
+   </footer>
+  </body>
+</html>
+

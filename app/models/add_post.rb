@@ -1,0 +1,2 @@
+class AddPost < ApplicationRecord
+end

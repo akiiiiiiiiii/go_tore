@@ -1,0 +1,18 @@
+<div class="posts">
+  <div class="center-block" style="width: 500px; height: 1200px; text-align: center; background-color: #ffe661; border: 1px solid gray; padding: 5px;">
+    <div class="new_post">
+    <h1>新規投稿</h1>
+    <%= form_for(@post) do |f| %>
+    <h4>タイトル</h4>
+    <%= f.text_field :title %>
+    <h4>本文</h4>
+    <%= f.text_area :body %>
+    <h4>場所</h4>
+    <%= f.select :place, [["東京", "東京"], ["埼玉", "埼玉"], ["神奈川", "神奈川"], ["千葉", "千葉"]] %>
+    <h4>画像</h4>
+    <%= f.attachment_field :post_image %>
+    <%= f.submit '投稿' %>
+   <% end %>
+  </div>
+ </div>
+</div>

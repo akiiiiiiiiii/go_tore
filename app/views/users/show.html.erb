@@ -1,0 +1,35 @@
+<div class="user_show">
+<div class="center-block" style="width: 500px; height: 780px; text-align: center; background-color: #ffe661; border: 1px solid gray; padding: 5px;">
+  <table class="table">
+    <tr><th class="profile-name">名前：<%= @user.name %></th></tr>
+    <tr><th> <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpeg', class: "img-circle pull-left profile-img", fallback: "no_image2.jpg" %></th></tr>
+    <tr><th class="introduction">自己紹介:<%= @user.introduction %></th></tr>
+    <tr><th class="birthday">生年月日:<%= @user.birthday %>  (<%= @age %>歳)</th></tr>
+    <tr><th class="gender_id">性別:<%= @user.gender_id %></th></tr>
+    <tr><th class="blood_type_id">血液型:<%= @user.blood_type_id %></th></tr>
+    <tr><th class="birthplace">出身地:<%= @user.birthplace %></th></tr>
+    <tr><th class="residence">居住地:<%= @user.residence %></th></tr>
+    <tr><th class="history">トレーニング歴 :<%= @user.history %></th></tr>
+    <tr><th class="homegym">通ってるジム:<%= @user.homegym %></th></tr>
+    <tr><th class="purpose">トレーニング目的:<%= @user.purpose %></th></tr>
+    <tr><th class="good">得意な種目:<%= @user.good %></th></tr>
+    <tr><th class="bad">苦手な種目:<%= @user.bad %></th></tr>
+    <tr><th class="supplement">サプリメント:<%= @user.supplement %></th></tr>
+    <tr><th class="status">現在のステータス:<%= @user.status %></th></tr>
+    <tr><th class="twitter">Twitter:<%= @user.twitter %></th></tr>
+    <tr><th class="instagram">Instagram:<%= @user.instagram %></th></tr>
+
+  </table>
+
+    <% if @user.id == current_user.id %>
+
+    <div data-turbolinks="false">
+     <%= link_to "プロフィール編集", edit_user_path(@user), class:"btn btn-default btn-block btn-base-1 mt-20" %>
+    </div>
+
+       <% else %>
+       <%= link_to "メッセージを送る", message_path(@user), class: "btn btn-success" %>
+    <% end %>
+</div>
+</div>
+

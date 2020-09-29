@@ -1,0 +1,235 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ *= require font-awesome
+ */
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+@media (min-width: 768px){
+.navbar-nav{
+  margin: 0 auto;
+  display: table;
+  table-layout: fixed;
+  float:none;
+}
+}
+
+body{
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
+  position: relative;
+}
+
+.posts{
+ background-image: url("post.png");
+ background-size: cover;
+ height: 1300px;
+ padding-top: 10px;
+}
+
+.users{
+ background-image: url("users.png");
+ background-size: cover;
+ height: 850px;
+ padding-top: 10px;
+}
+
+.user_show{
+ background-image: url("my.png");
+ background-size: cover;
+ height: 850px;
+ padding-top: 10px;
+}
+
+.user_edit{
+ background-image: url("my.png");
+ background-size: cover;
+ height: 1050px;
+ padding-top: 10px;
+}
+
+.center-block{
+  padding-top: 10px;
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+
+.sig_in{
+  height: 600px;
+  width: 100%;
+  padding-top: 70px;
+  background-image: url("body2.png");
+  background-size: cover;
+}
+.log_in{
+  height: 600px;
+  width: 100%;
+  padding-top: 70px;
+  background-image: url("body2.png");
+  background-size: cover;
+}
+
+.message{
+ background-image: url("message.png");
+ background-size: cover;
+ text-align: center;
+ height: 1050px;
+ padding-top: 10px;
+}
+
+.in{
+  width: 280px;
+  height: 430px;
+  border:1px solid #000;
+  box-shadow:5px 5px 5px 5px rgba(0, 0, 0, 0.2);
+  margin: 0 auto;
+  background-color: #FFFFFF;
+  text-align: center;
+  padding: 20px;
+}
+
+footer{
+  background-color: #C0C0C0;
+  text-align: center;
+  padding: 20px 0;
+  bottom: 0;
+  width: 100%;
+
+}
+
+section.message_box {
+  width: 200px;
+  padding: 10px;
+  border: 1px solid $gray-light;
+  overflow: scroll;
+  background-color: #ffff;
+  #messages {
+    height: 200px;
+  }
+}
+
+div.message_form {
+  padding-top: 10px;
+}
+
+#message_sender {
+  font-size: 1.1em;
+}
+
+#message_content {
+  font-size: 1.0em;
+}
+
+.member {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  list-style: none;
+  padding: 0px;
+}
+
+.member_li {
+  flex-basis: 50%;
+  text-align: center;
+  display: inline-block;
+  float: left;
+  padding: 10px;
+}
+
+.top{
+  text-align: center;
+  height: 720px;
+  margin: 0 auto;
+  padding-top: 100px;
+  background-image: url("body2.png");
+  background-size: cover;
+}
+
+.top h1{
+  color: #FFFFFF;
+  font-size: 70px;
+}
+
+li{
+  list-style: none;
+}
+
+.headline{
+  height: 40px;
+}
+
+.new_post_box{
+  float: left;
+}
+
+.search_box{
+  float: left;
+  height: 30px;
+}
+
+.search{
+  float: left;
+}
+
+.sort{
+  float: right;
+}
+
+
+/*フラッシュメッセージ*/
+.flash{
+  width: 100%;
+  margin-top: 40px;
+  margin-bottom: 0px;
+
+}
+
+.notice {
+  background-color: green;
+  color: #white;
+  text-align: center;
+  padding: 15px;
+  margin-bottom: 0px;
+}
+
+.alert {
+  background-color: red;
+  color: #white;
+  text-align: center;
+  padding: 15px;
+  margin-bottom: 0px;
+}
+
+.agreement{
+  font-size: 10px;
+}
+
+
+.search_list{
+  width: 290px;
+  height: 370px;
+  text-align: center;
+  background-color:rgba(255,255,255,0.8);
+  border: 1px solid gray;
+  float: left;
+  margin: 40px;
+  padding: 10px
+}
+
+.headline{
+  border-bottom: solid 1px #FFFFFF;
+}

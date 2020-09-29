@@ -1,0 +1,31 @@
+<section class="log_in">
+
+<div class="in">
+<h2>ログイン</h2>
+
+<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <div class="form-group has-icon">
+        <label class="control-label sr-only" for="inputEmail">Email</label>
+        <%= f.email_field :email, class:"form-control", id:"inputEmail", placeholder:"メールアドレス"%>
+    </div>
+    <div class="form-group has-icon">
+        <label class="control-label sr-only" for="inputEmail">Password</label>
+        <%= f.password_field :password, autocomplete: "off", class:"form-control", id:"inputPassword", placeholder:"パスワード" %>
+    </div>
+
+  <% if devise_mapping.rememberable? -%>
+    <div class="field">
+      <%= f.check_box :remember_me %>
+      <%= f.label :パスワードを保存する %>
+    </div>
+  <% end -%>
+
+  <div class="form-group has-icon">
+    <%= f.submit "ログイン", class:" btn-lg btn-block btn-base-1 mt-20" %>
+  </div>
+  <div class="form-group has-icon">
+　　<%= link_to "Facebookでログイン", user_facebook_omniauth_authorize_path, class:"btn btn-primary btn-lg btn-block btn-base-1 mt-20" %>
+　</div>
+<% end %>
+</div>
+</section>

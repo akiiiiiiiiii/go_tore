@@ -1,0 +1,69 @@
+<div class="posts">
+
+<!-- 詳細検索 -->
+<div class="search_list">
+  <h3>詳細検索</h3>
+  <div class="">
+   <% provide(:title, 'All posts') %>
+  <%= search_form_for Post.ransack()  do |f| %>
+  <div class="search_box">
+    <div class="form-group"><%= f.search_field :body_cont, placeholder:"募集を検索", size:10 %></div>
+    <div class="form-group"><%= f.select :place_eq, [["東京", "東京"], ["埼玉", "埼玉"], ["神奈川", "神奈川"], ["千葉", "千葉"]], :include_blank => "指定なし" %>場所</div>
+    <div class="search">
+      <button type="submit" class="btn btn-default active">検索</button>
+    </div>
+   <!--
+    <%= sort_link(@search, :total_post_comments, 'いいね数') %>
+    <%= sort_link(@search, :total_favorites, 'コメント数') %>
+    -->
+  <% end %>
+  </div>
+  </div>
+</div>
+
+
+<div class="center-block" style="width: 500px; height: 1200px; text-align: center; background-color: #ffe661; border: 1px solid gray; padding: 5px;">
+
+<div class="headline">
+  <div class="new_post_box">
+    <a href="posts/new" class="btn btn-default active">新規投稿</a>
+  </div>
+
+<!-- 検索ボックス -->
+  <div class="search_box">
+ <% provide(:title, 'All posts') %>
+  <%= search_form_for Post.ransack()  do |f| %>
+    <div class="form-group"><%= f.search_field :body_cont, placeholder:"募集を検索", size:10 %></div>
+  </div>
+  <div class="search">
+    <button type="submit" class="btn btn-default active">検索</button>
+    <%= sort_link(@search, :created_at, '投稿日時') %>
+  <% end %>
+  </div>
+</div>
+
+    <table class="table">
+    	<tr>
+    	  <th>投稿ユーザー</th>
+    	  <th>タイトル</th>
+    	  <th>本文</th>
+    	  <th>コメント数</th>
+    	  <th>いいね数</th>
+    	</tr>
+     <% @posts.each do |post| %>
+        <tr>
+         <td>
+         <%= link_to user_path(post.user) do %> <%= attachment_image_tag(post.user, :profile_image, :fill, 40, 40, format: 'jpeg', class: "img-circle pull-left profile-img", fallback: "no_image.jpg") %>
+         <%= link_to post.user.name, user_path(post.user.id) %>
+     <% end %>
+          </td>
+          <td><%= link_to post.title .truncate(10), post_path(post.id) %></td>
+          <td><%= post.body .truncate(10) %></td>
+          <td><%= post.post_comments.count %>件のコメント</td>
+          <td><%= post.favorites.count %>人がいいねしました</td>
+        </tr>
+     <% end %>
+    </table>
+    <%= paginate @posts %>
+</div>
+</div>

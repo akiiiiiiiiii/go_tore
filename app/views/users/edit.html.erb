@@ -1,0 +1,98 @@
+<div class="user_edit">
+<div class="center-block" style="width: 500px; height: 900px; text-align: center; background-color: #ffe661; border: 1px solid gray; padding: 5px;">
+
+<table border="1">
+<%= form_for(@user) do |f| %>
+  <tr>
+    <td><%= f.label :名前 %></td>
+    <td><%= f.text_field :name, class:"form-control", id:"inputEmail"%></td>
+  </tr>
+
+  <tr>
+    <td><%= f.label :プロフ画像 %></td>
+    <td><%= attachment_image_tag @user, :profile_image, :fill, 40, 40, class: "img-circle pull-left profile-thumb", fallback: "no_image.jpg"%>
+    <%= f.attachment_field :profile_image, placeholder: "プロフィール画像", class: "user-edit-form" %></td>
+  </tr>
+
+  <tr>
+    <td><%= f.label :自己紹介 %></td>
+    <td><%= f.text_area :introduction, class:"form-control", id:"inputEmail"%></td>
+  </tr>
+
+    <td><%= f.label :生年月日 %></td>
+    <td><%= f.date_field :birthday, class:"form-control", id:"inputEmail"%></td>
+
+  <tr>
+    <td><%= f.label :性別 %></td>
+    <td>
+      <%= f.radio_button :gender_id, "男" %> <%= f.label :gender_id_1, "男" %>
+      <%= f.radio_button :gender_id, "女" %> <%= f.label :gender_id_2, "女" %>
+      <%= f.radio_button :gender_id, "その他" %> <%= f.label :gender_id_3, "その他" %>
+    </td>
+  </tr>
+
+  <tr>
+    <td><%= f.label :"血液型" %></td>
+    <td><%= f.select :blood_type_id, [["A", "A"], ["B", "B"], ["O", "O"], ["AB", "AB"], ["不明", "不明"]] ,class:"form-control", id:"inputEmail" %></td>
+  </tr>
+
+  <tr>
+   <td><%= f.label :出身地 %></td>
+     <td><%= f.select :birthplace, [["東京", "東京"], ["埼玉", "埼玉"], ["神奈川", "神奈川"], ["千葉", "千葉"]] ,class:"form-control", id:"inputEmail" %></td>
+  </tr>
+
+  <tr>
+   <td><%= f.label :居住地 %></td>
+     <td><%= f.select :residence, [["東京", "東京"], ["埼玉", "埼玉"], ["神奈川", "神奈川"], ["千葉", "千葉"]] ,class:"form-control", id:"inputEmail" %></td>
+  </tr>
+
+  <tr>
+   <td><%= f.label :トレーニング歴 %></td>
+     <td><%= f.select :history, [["1年未満", "1年未満"], ["～1年", "～1年"], ["～2年", "～2年"], ["～3年", "～3年"], ["～5年", "～5年"], ["5年以上", "5年以上"]] ,class:"form-control", id:"inputEmail" %></td>
+  </tr>
+
+  <tr>
+   <td><%= f.label :通ってるジム %></td>
+     <td><%= f.select :homegym, [["JEXER", "JEXER"], ["JOYFIT", "JOYFIT"], ["ANYTIME FITNESS", "ANYTIME FITNESS"], ["konami", "konami"],["GOLDSGYM", "GOLDSGYM"],["その他", "その他"]] ,class:"form-control", id:"inputEmail" %></td>
+  </tr>
+
+  <tr>
+   <td><%= f.label :目的 %></td>
+    <td><%= f.text_area :purpose, class:"form-control", id:"inputEmail"%></td>
+  </tr>
+
+  <tr>
+   <td><%= f.label :得意な種目 %></td>
+    <td><%= f.text_area :good, class:"form-control", id:"inputEmail"%></td>
+  </tr>
+
+  <tr>
+   <td><%= f.label :苦手な種目 %></td>
+    <td><%= f.text_area :bad, class:"form-control", id:"inputEmail"%></td>
+  </tr>
+
+  <tr>
+    <td><%= f.label :サプリメント %></td>
+      <td><%= f.text_area :supplement, class:"form-control", id:"inputEmail"%></td>
+  <tr>
+
+  <tr>
+   <td><%= f.label :ステータス %></td>
+    <td><%= f.text_area :status, class:"form-control", id:"inputEmail"%></td>
+  </tr>
+
+  <tr>
+   <td><%= f.label :Twitter %></td>
+    <td><%= f.text_area :twitter, class:"form-control", id:"inputEmail"%></td>
+  </tr>
+
+  <tr>
+   <td><%= f.label :Instagram %></td>
+    <td><%= f.text_area :instagram, class:"form-control", id:"inputEmail"%></td>
+  </tr>
+</table>
+
+    <%= f.submit "変更を保存", class:"btn btn-lg btn-block btn-base-1 mt-20" %>
+
+<% end %>
+</div>
